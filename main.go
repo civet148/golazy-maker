@@ -27,6 +27,11 @@ const (
 	CmdFlag_Config = "config"
 )
 
+// @title golazy-maker示例API
+// @version 1.0
+// @description 这是一个 Gin 的 Swagger 示例
+// @host localhost:8080
+// @BasePath /api/v1
 func main() {
 
 	app := &cli.App{

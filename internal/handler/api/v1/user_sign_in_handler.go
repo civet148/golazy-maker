@@ -5,12 +5,21 @@ import (
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"test/internal/logic/v1"
+	"test/internal/logic/api/v1"
 	"test/internal/svc"
 	"test/internal/types"
 )
 
-// 用户登录
+// @Summary 用户登录
+// @Description 用户登录接口
+// @Tags
+// @Accept json
+// @Produce json
+// @Param login body types.UserSignInReq true "登录信息"
+// @Success 200 {object} models.LoginResponse
+// @Failure 400 {object} svc.Response
+// @Failure 500 {object} svc.Response
+// @Router /v1/login [post]
 func UserSignInHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 

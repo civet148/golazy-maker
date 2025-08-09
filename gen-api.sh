@@ -1,2 +1,2 @@
 #!/bin/sh
-golazy api go -f ./test.api
+golazy api go -f ./main.api
