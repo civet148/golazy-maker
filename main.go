@@ -35,9 +35,10 @@ func main() {
 		Version: fmt.Sprintf("v%s %s commit %s", Version, BuildTime, GitCommit),
 		Flags: []cli.Flag{
 			&cli.StringFlag{
-				Name:  CmdFlag_Config,
-				Usage: "config file name",
-				Value: "etc/main.yaml",
+				Name:    CmdFlag_Config,
+				Aliases: []string{"c"},
+				Usage:   "config file name",
+				Value:   "main.yaml",
 			},
 		},
 		Action: func(ctx *cli.Context) error {
