@@ -1,0 +1,93 @@
+definitions:
+  svc.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+    type: object
+  types.UserSignInReq:
+    properties:
+      password:
+        description: 密码
+        type: string
+      user_name:
+        description: 用户名
+        type: string
+    type: object
+  types.UserSignInRsp:
+    type: object
+host: localhost:8888
+info:
+  contact: {}
+  description: 这是一个 Gin 的 Swagger 示例
+  title: golazy-maker示例API
+  version: "1.0"
+paths:
+  /api/v1/sign_in:
+    post:
+      consumes:
+      - application/json
+      description: 用户登录接口
+      parameters:
+      - description: 登录信息
+        in: body
+        name: UserSignIn
+        required: true
+        schema:
+          $ref: '#/definitions/types.UserSignInReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UserSignInRsp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/svc.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/svc.Response'
+      summary: 用户登录
+      tags:
+      - ""
+  /api/v1/ws/market:
+    get:
+      consumes:
+      - application/json
+      description: WebSocket协议接口，可能返回文本或二进制数据
+      parameters:
+      - description: Bearer token
+        in: header
+        name: authorization
+        required: true
+        type: string
+      - description: 市场名称过滤
+        enum:
+        - BTC
+        - ETH
+        - USDT
+        in: query
+        name: market
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: 成功返回文本或二进制数据
+          schema:
+            type: string
+        "400":
+          description: 错误信息
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: 获取市场列表(WebSocket)
+      tags:
+      - WebSocket市场数据
+swagger: "2.0"

@@ -15,11 +15,11 @@ import (
 // @Tags
 // @Accept json
 // @Produce json
-// @Param login body types.UserSignInReq true "登录信息"
-// @Success 200 {object} models.LoginResponse
+// @Param UserSignIn body types.UserSignInReq true "登录信息"
+// @Success 200 {object} types.UserSignInRsp
 // @Failure 400 {object} svc.Response
 // @Failure 500 {object} svc.Response
-// @Router /v1/login [post]
+// @Router /api/v1/sign_in [post]
 func UserSignInHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 

@@ -30,8 +30,8 @@ const (
 // @title golazy-maker示例API
 // @version 1.0
 // @description 这是一个 Gin 的 Swagger 示例
-// @host localhost:8080
-// @BasePath /api/v1
+// @host localhost:8888
+// @BasePath
 func main() {
 
 	app := &cli.App{
@@ -43,7 +43,7 @@ func main() {
 				Name:    CmdFlag_Config,
 				Aliases: []string{"c"},
 				Usage:   "config file name",
-				Value:   "main.yaml",
+				Value:   "config.yaml",
 			},
 		},
 		Action: func(ctx *cli.Context) error {
