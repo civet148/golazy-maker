@@ -3,6 +3,7 @@ package handler
 
 import (
 	"github.com/civet148/log"
+
 	"github.com/gin-gonic/gin"
 	apiv1 "test/internal/handler/api/v1"
 
@@ -10,16 +11,17 @@ import (
 
 	apiv1ws "test/internal/handler/api/v1/ws"
 
-	"test/internal/svc"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-
-	_ "test/docs" // 这里替换为你的项目模块路径
+	_ "test/docs"
+	"test/internal/middleware"
+	"test/internal/svc"
 )
 
 func RegisterHandlers(server *gin.Engine, serverCtx *svc.ServiceContext) {
-
 	gapiv1 := server.Group("/api/v1")
+	gapiv1.Use(middleware.NewCorsMiddleware().Handle())
+	gapiv1.Use(middleware.NewJwtAuthMiddleware().Handle())
 	{
 		gapiv1.POST("/sign_in", apiv1.UserSignInHandler(serverCtx))
 		gapiv1.POST("/sign_up", apiv1.UserSignUpHandler(serverCtx))
@@ -27,6 +29,7 @@ func RegisterHandlers(server *gin.Engine, serverCtx *svc.ServiceContext) {
 	}
 
 	gapiv1user := server.Group("/api/v1/user")
+	gapiv1user.Use(middleware.NewJwtAuthMiddleware().Handle())
 	{
 		gapiv1user.GET("/list", apiv1user.GetUserListHandler(serverCtx))
 		gapiv1user.PUT("/add", apiv1user.AddUserHandler(serverCtx))
