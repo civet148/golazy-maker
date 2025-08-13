@@ -21,7 +21,6 @@ import (
 func RegisterHandlers(server *gin.Engine, serverCtx *svc.ServiceContext) {
 	gapiv1 := server.Group("/api/v1")
 	gapiv1.Use(middleware.NewCorsMiddleware().Handle())
-	gapiv1.Use(middleware.NewJwtAuthMiddleware().Handle())
 	{
 		gapiv1.POST("/sign_in", apiv1.UserSignInHandler(serverCtx))
 		gapiv1.POST("/sign_up", apiv1.UserSignUpHandler(serverCtx))
