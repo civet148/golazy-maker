@@ -1,7 +1,6 @@
 package v1
 
 import (
-	"context"
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -10,7 +9,14 @@ import (
 	"test/internal/types"
 )
 
-// 用户退出登录
+// @Summary 用户退出登录
+// @Description
+// @Tags
+// @Accept json
+// @Produce json
+// @Param UserSignOut body types.UserSignOutReq true "request params description"
+// @Success 200 {object} types.UserSignOutRsp
+// @Router /api/v1/sign_out [post]
 func UserSignOutHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -20,8 +26,8 @@ func UserSignOutHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 			return
 		}
 		log.Debugf("request [%+v]", req)
-		l := v1.NewUserSignOutLogic(context.Background(), svcCtx)
-		resp, err := l.UserSignOut(&req)
+		l := v1.NewUserSignOutLogic(c, svcCtx)
+		resp, err := l.UserSignOut(c, &req)
 		c.JSON(http.StatusOK, svc.JsonResponse(resp, err))
 
 	}

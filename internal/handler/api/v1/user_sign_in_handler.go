@@ -1,7 +1,6 @@
 package v1
 
 import (
-	"context"
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -11,14 +10,12 @@ import (
 )
 
 // @Summary 用户登录
-// @Description 用户登录接口
+// @Description
 // @Tags
 // @Accept json
 // @Produce json
-// @Param UserSignIn body types.UserSignInReq true "登录信息"
+// @Param UserSignIn body types.UserSignInReq true "request params description"
 // @Success 200 {object} types.UserSignInRsp
-// @Failure 400 {object} svc.Response
-// @Failure 500 {object} svc.Response
 // @Router /api/v1/sign_in [post]
 func UserSignInHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -29,8 +26,8 @@ func UserSignInHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 			return
 		}
 		log.Debugf("request [%+v]", req)
-		l := v1.NewUserSignInLogic(context.Background(), svcCtx)
-		resp, err := l.UserSignIn(&req)
+		l := v1.NewUserSignInLogic(c, svcCtx)
+		resp, err := l.UserSignIn(c, &req)
 		c.JSON(http.StatusOK, svc.JsonResponse(resp, err))
 
 	}

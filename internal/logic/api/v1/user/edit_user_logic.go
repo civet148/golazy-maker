@@ -20,8 +20,9 @@ func NewEditUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *EditUser
 	}
 }
 
-func (l *EditUserLogic) EditUser(req *types.EditUserReq) (resp *types.EditUserRsp, err error) {
+func (l *EditUserLogic) EditUser(ctx context.Context, req *types.EditUserReq) (resp *types.EditUserRsp, err error) {
+	// you can call ctx.(*gin.Context) convert to gin context
 	// todo: add your logic here and delete this line
 
-	return
+	return &types.EditUserRsp{}, nil
 }

@@ -20,8 +20,9 @@ func NewUserSignOutLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserS
 	}
 }
 
-func (l *UserSignOutLogic) UserSignOut(req *types.UserSignOutReq) (resp *types.UserSignOutRsp, err error) {
+func (l *UserSignOutLogic) UserSignOut(ctx context.Context, req *types.UserSignOutReq) (resp *types.UserSignOutRsp, err error) {
+	// you can call ctx.(*gin.Context) convert to gin context
 	// todo: add your logic here and delete this line
 
-	return
+	return &types.UserSignOutRsp{}, nil
 }

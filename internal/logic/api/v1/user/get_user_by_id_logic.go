@@ -20,8 +20,9 @@ func NewGetUserByIdLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUs
 	}
 }
 
-func (l *GetUserByIdLogic) GetUserById(req *types.GetUserByIdReq) (resp *types.GetUserByIdRsp, err error) {
+func (l *GetUserByIdLogic) GetUserById(ctx context.Context, req *types.GetUserByIdReq) (resp *types.GetUserByIdRsp, err error) {
+	// you can call ctx.(*gin.Context) convert to gin context
 	// todo: add your logic here and delete this line
 
-	return
+	return &types.GetUserByIdRsp{}, nil
 }

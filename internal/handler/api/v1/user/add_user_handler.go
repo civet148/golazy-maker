@@ -1,7 +1,6 @@
 package user
 
 import (
-	"context"
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -10,7 +9,14 @@ import (
 	"test/internal/types"
 )
 
-// 添加用户
+// @Summary 添加用户
+// @Description
+// @Tags
+// @Accept json
+// @Produce json
+// @Param AddUser body types.AddUserReq true "request params description"
+// @Success 200 {object} types.AddUserRsp
+// @Router /api/v1/user/add [put]
 func AddUserHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -20,8 +26,8 @@ func AddUserHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 			return
 		}
 		log.Debugf("request [%+v]", req)
-		l := user.NewAddUserLogic(context.Background(), svcCtx)
-		resp, err := l.AddUser(&req)
+		l := user.NewAddUserLogic(c, svcCtx)
+		resp, err := l.AddUser(c, &req)
 		c.JSON(http.StatusOK, svc.JsonResponse(resp, err))
 
 	}

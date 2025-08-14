@@ -1,7 +1,6 @@
 package user
 
 import (
-	"context"
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -10,18 +9,25 @@ import (
 	"test/internal/types"
 )
 
-// 根据ID查询用户
+// @Summary 根据ID查询用户
+// @Description
+// @Tags
+// @Accept json
+// @Produce json
+// @Param GetUserById body types.GetUserByIdReq true "request params description"
+// @Success 200 {object} types.GetUserByIdRsp
+// @Router /api/v1/user/:id [get]
 func GetUserByIdHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 
 		var req types.GetUserByIdReq
-		if err := svc.ShouldBindParams(c, &req); err != nil {
+		if err := c.ShouldBindUri(&req); err != nil {
 			c.JSON(http.StatusOK, svc.JsonResponse(nil, err))
 			return
 		}
 		log.Debugf("request [%+v]", req)
-		l := user.NewGetUserByIdLogic(context.Background(), svcCtx)
-		resp, err := l.GetUserById(&req)
+		l := user.NewGetUserByIdLogic(c, svcCtx)
+		resp, err := l.GetUserById(c, &req)
 		c.JSON(http.StatusOK, svc.JsonResponse(resp, err))
 
 	}

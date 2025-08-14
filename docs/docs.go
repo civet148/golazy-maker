@@ -17,7 +17,6 @@ const docTemplate = `{
     "paths": {
         "/api/v1/sign_in": {
             "post": {
-                "description": "用户登录接口",
                 "consumes": [
                     "application/json"
                 ],
@@ -30,7 +29,7 @@ const docTemplate = `{
                 "summary": "用户登录",
                 "parameters": [
                     {
-                        "description": "登录信息",
+                        "description": "request params description",
                         "name": "UserSignIn",
                         "in": "body",
                         "required": true,
@@ -45,17 +44,236 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/types.UserSignInRsp"
                         }
-                    },
-                    "400": {
-                        "description": "Bad Request",
+                    }
+                }
+            }
+        },
+        "/api/v1/sign_out": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "用户退出登录",
+                "parameters": [
+                    {
+                        "description": "request params description",
+                        "name": "UserSignOut",
+                        "in": "body",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/svc.Response"
+                            "$ref": "#/definitions/types.UserSignOutReq"
                         }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/svc.Response"
+                            "$ref": "#/definitions/types.UserSignOutRsp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/sign_up": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "用户注册",
+                "parameters": [
+                    {
+                        "description": "request params description",
+                        "name": "UserSignUp",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UserSignUpReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.UserSignUpRsp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/:id": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "根据ID查询用户",
+                "parameters": [
+                    {
+                        "description": "request params description",
+                        "name": "GetUserById",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.GetUserByIdReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.GetUserByIdRsp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/add": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "添加用户",
+                "parameters": [
+                    {
+                        "description": "request params description",
+                        "name": "AddUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.AddUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.AddUserRsp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "删除用户",
+                "parameters": [
+                    {
+                        "description": "request params description",
+                        "name": "DeleteUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.DeleteUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.DeleteUserRsp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/edit": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "修改用户",
+                "parameters": [
+                    {
+                        "description": "request params description",
+                        "name": "EditUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.EditUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.EditUserRsp"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/list": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "用户列表",
+                "parameters": [
+                    {
+                        "description": "request params description",
+                        "name": "GetUserList",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.GetUserListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.GetUserListRsp"
                         }
                     }
                 }
@@ -63,51 +281,30 @@ const docTemplate = `{
         },
         "/api/v1/ws/market": {
             "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "WebSocket协议接口，可能返回文本或二进制数据",
                 "consumes": [
-                    "application/json"
+                    "text/plain"
                 ],
                 "produces": [
                     "text/plain"
                 ],
                 "tags": [
-                    "WebSocket市场数据"
+                    ""
                 ],
-                "summary": "获取市场列表(WebSocket)",
+                "summary": "市场行情（websocket方式）",
                 "parameters": [
                     {
-                        "type": "string",
-                        "description": "Bearer token",
-                        "name": "authorization",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "enum": [
-                            "BTC",
-                            "ETH",
-                            "USDT"
-                        ],
-                        "type": "string",
-                        "description": "市场名称过滤",
-                        "name": "market",
-                        "in": "query"
+                        "description": "request params description",
+                        "name": "WsMarketList",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "成功返回文本或二进制数据",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "400": {
-                        "description": "错误信息",
+                        "description": "OK",
                         "schema": {
                             "type": "string"
                         }
@@ -117,32 +314,52 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "svc.Response": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer"
-                },
-                "data": {},
-                "msg": {
-                    "type": "string"
-                }
-            }
+        "types.AddUserReq": {
+            "type": "object"
+        },
+        "types.AddUserRsp": {
+            "type": "object"
+        },
+        "types.DeleteUserReq": {
+            "type": "object"
+        },
+        "types.DeleteUserRsp": {
+            "type": "object"
+        },
+        "types.EditUserReq": {
+            "type": "object"
+        },
+        "types.EditUserRsp": {
+            "type": "object"
+        },
+        "types.GetUserByIdReq": {
+            "type": "object"
+        },
+        "types.GetUserByIdRsp": {
+            "type": "object"
+        },
+        "types.GetUserListReq": {
+            "type": "object"
+        },
+        "types.GetUserListRsp": {
+            "type": "object"
         },
         "types.UserSignInReq": {
-            "type": "object",
-            "properties": {
-                "password": {
-                    "description": "密码",
-                    "type": "string"
-                },
-                "user_name": {
-                    "description": "用户名",
-                    "type": "string"
-                }
-            }
+            "type": "object"
         },
         "types.UserSignInRsp": {
+            "type": "object"
+        },
+        "types.UserSignOutReq": {
+            "type": "object"
+        },
+        "types.UserSignOutRsp": {
+            "type": "object"
+        },
+        "types.UserSignUpReq": {
+            "type": "object"
+        },
+        "types.UserSignUpRsp": {
             "type": "object"
         }
     }
