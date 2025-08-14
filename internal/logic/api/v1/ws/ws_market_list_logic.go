@@ -3,7 +3,7 @@ package ws
 import (
 	"context"
 
-	"test/internal/svc"
+	"main/internal/svc"
 )
 
 type WsMarketListLogic struct {

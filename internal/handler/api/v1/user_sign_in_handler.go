@@ -3,10 +3,10 @@ package v1
 import (
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
+	"main/internal/logic/api/v1"
+	"main/internal/svc"
+	"main/internal/types"
 	"net/http"
-	"test/internal/logic/api/v1"
-	"test/internal/svc"
-	"test/internal/types"
 )
 
 // @Summary 用户登录

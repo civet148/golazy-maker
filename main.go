@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"github.com/spf13/viper"
 	"github.com/urfave/cli/v2"
+	"main/internal/config"
+	"main/internal/handler"
+	"main/internal/svc"
 	"os"
-	"test/internal/config"
-	"test/internal/handler"
-	"test/internal/svc"
 
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
@@ -19,7 +19,7 @@ const (
 )
 
 var (
-	BuildTime = "2025-08-09 09:13:41"
+	BuildTime = "2025-08-14 15:38:50"
 	GitCommit = "<N/A>"
 )
 
@@ -27,9 +27,9 @@ const (
 	CmdFlag_Config = "config"
 )
 
-// @title golazy-maker示例API
+// @title main swagger APIs
 // @version 1.0
-// @description 这是一个 Gin 的 Swagger 示例
+// @description
 // @host localhost:8888
 // @BasePath
 func main() {

@@ -41,7 +41,7 @@ ENV SRC_DIR /<no value>
 
 
 # 管理系统主程序
-COPY --from=builder $SRC_DIR/test /usr/local/bin/test
+COPY --from=builder $SRC_DIR/main /usr/local/bin/main
 COPY --from=builder /etc/ssl/certs /etc/ssl/certs
 
 

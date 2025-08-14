@@ -5,17 +5,19 @@ import (
 	"github.com/civet148/log"
 
 	"github.com/gin-gonic/gin"
-	apiv1 "test/internal/handler/api/v1"
+	apiv1 "main/internal/handler/api/v1"
 
-	apiv1user "test/internal/handler/api/v1/user"
+	apiv1user "main/internal/handler/api/v1/user"
 
-	apiv1ws "test/internal/handler/api/v1/ws"
+	apiv1ws "main/internal/handler/api/v1/ws"
+
+	apiv1pay "main/internal/handler/api/v1/pay"
 
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	_ "test/docs"
-	"test/internal/middleware"
-	"test/internal/svc"
+	_ "main/docs"
+	"main/internal/middleware"
+	"main/internal/svc"
 )
 
 func RegisterHandlers(server *gin.Engine, serverCtx *svc.ServiceContext) {
@@ -40,6 +42,11 @@ func RegisterHandlers(server *gin.Engine, serverCtx *svc.ServiceContext) {
 	gapiv1ws := server.Group("/api/v1/ws")
 	{
 		gapiv1ws.GET("/market", apiv1ws.WsMarketListHandler(serverCtx))
+	}
+
+	gapiv1pay := server.Group("/api/v1/pay")
+	{
+		gapiv1pay.GET("/wechat/notify/{tid:[0-9]+}", apiv1pay.WechatPayNotifyHandler(serverCtx))
 	}
 	// add swagger route handler
 	if serverCtx.Config.Mode == "dev" {

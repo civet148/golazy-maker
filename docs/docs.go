@@ -15,6 +15,36 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/api/v1/pay/wechat/notify/:tid": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "微信支付回调通知(URI包含交易ID)",
+                "parameters": [
+                    {
+                        "description": "params description",
+                        "name": "WechatPayNotify",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.WechatPayNotifyReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/api/v1/sign_in": {
             "post": {
                 "consumes": [
@@ -29,7 +59,7 @@ const docTemplate = `{
                 "summary": "用户登录",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "UserSignIn",
                         "in": "body",
                         "required": true,
@@ -62,7 +92,7 @@ const docTemplate = `{
                 "summary": "用户退出登录",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "UserSignOut",
                         "in": "body",
                         "required": true,
@@ -95,7 +125,7 @@ const docTemplate = `{
                 "summary": "用户注册",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "UserSignUp",
                         "in": "body",
                         "required": true,
@@ -128,7 +158,7 @@ const docTemplate = `{
                 "summary": "根据ID查询用户",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "GetUserById",
                         "in": "body",
                         "required": true,
@@ -161,7 +191,7 @@ const docTemplate = `{
                 "summary": "添加用户",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "AddUser",
                         "in": "body",
                         "required": true,
@@ -194,7 +224,7 @@ const docTemplate = `{
                 "summary": "删除用户",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "DeleteUser",
                         "in": "body",
                         "required": true,
@@ -227,7 +257,7 @@ const docTemplate = `{
                 "summary": "修改用户",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "EditUser",
                         "in": "body",
                         "required": true,
@@ -260,7 +290,7 @@ const docTemplate = `{
                 "summary": "用户列表",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "GetUserList",
                         "in": "body",
                         "required": true,
@@ -293,7 +323,7 @@ const docTemplate = `{
                 "summary": "市场行情（websocket方式）",
                 "parameters": [
                     {
-                        "description": "request params description",
+                        "description": "params description",
                         "name": "WsMarketList",
                         "in": "body",
                         "required": true,
@@ -361,6 +391,9 @@ const docTemplate = `{
         },
         "types.UserSignUpRsp": {
             "type": "object"
+        },
+        "types.WechatPayNotifyReq": {
+            "type": "object"
         }
     }
 }`
@@ -371,8 +404,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8888",
 	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "golazy-maker示例API",
-	Description:      "这是一个 Gin 的 Swagger 示例",
+	Title:            "main swagger APIs",
+	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

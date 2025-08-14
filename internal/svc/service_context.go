@@ -2,8 +2,8 @@ package svc
 
 import (
 	"github.com/civet148/sqlca/v3"
+	"main/internal/config"
 	"reflect"
-	"test/internal/config"
 )
 
 type CodeMsg interface {

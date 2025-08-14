@@ -50,3 +50,12 @@ service api {
     @handler WsMarketList
     get /market (gin.Context) returns (nil)
 }
+
+@server (
+    prefix:     /api/v1/pay
+)
+service api {
+    @doc "微信支付回调通知(URI包含交易ID)"
+    @handler WechatPayNotify 
+    get /wechat/notify/{tid:[0-9]+} (WechatPayNotifyReq) returns (nil)
+}

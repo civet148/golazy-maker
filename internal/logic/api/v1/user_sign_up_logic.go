@@ -3,8 +3,8 @@ package v1
 import (
 	"context"
 
-	"test/internal/svc"
-	"test/internal/types"
+	"main/internal/svc"
+	"main/internal/types"
 )
 
 type UserSignUpLogic struct {

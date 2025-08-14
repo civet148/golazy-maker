@@ -3,8 +3,8 @@ package ws
 import (
 	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
-	"test/internal/logic/api/v1/ws"
-	"test/internal/svc"
+	"main/internal/logic/api/v1/ws"
+	"main/internal/svc"
 )
 
 // @Summary 市场行情（websocket方式）

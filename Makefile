@@ -6,7 +6,7 @@ DATE_TIME=`date +'%Y%m%d %H:%M:%S'`
 COMMIT_ID=`git rev-parse --short HEAD`
 MANAGER_DIR=${PWD}
 FRONTEND_CODE=/tmp/web-frontend
-PROGRAM_NAME=test
+PROGRAM_NAME=main
 IMAGE_NAME=${PROGRAM_NAME}
 
 build:
@@ -40,7 +40,7 @@ db2go:
 .PHONY: db2go
 
 swagger:
-	go install github.com/swaggo/swag/cmd/swag@latest && swag init -g main.go
+	go install github.com/swaggo/swag/cmd/swag@v1.16.4 && swag init -g main.go
 .PHONY: swagger
 
 clean:

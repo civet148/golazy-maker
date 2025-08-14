@@ -11,7 +11,7 @@ TINYINT_TO_BOOL="is_deleted"
 DSN_URL="mysql://root:12345678@127.0.0.1:3306/test?charset=utf8"
 JSON_PROPERTIES=""
 SPEC_TYPES=""
-IMPORT_MODELS="test/internal/models"
+IMPORT_MODELS="main/internal/models"
 COMMON_TAGS=""
 
 # 检查 db2go 是否已安装

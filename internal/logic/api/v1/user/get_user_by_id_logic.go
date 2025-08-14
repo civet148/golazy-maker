@@ -3,8 +3,8 @@ package user
 import (
 	"context"
 
-	"test/internal/svc"
-	"test/internal/types"
+	"main/internal/svc"
+	"main/internal/types"
 )
 
 type GetUserByIdLogic struct {
