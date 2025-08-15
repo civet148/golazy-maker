@@ -1,12 +1,13 @@
 package user
 
 import (
-	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
-	"main/internal/logic/api/v1/user"
-	"main/internal/svc"
 	"main/internal/types"
 	"net/http"
+
+	"github.com/civet148/log"
+	"main/internal/logic/api/v1/user"
+	"main/internal/svc"
 )
 
 // @Summary 用户列表

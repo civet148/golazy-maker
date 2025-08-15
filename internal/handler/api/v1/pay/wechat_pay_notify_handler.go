@@ -1,12 +1,13 @@
 package pay
 
 import (
-	"github.com/civet148/log"
 	"github.com/gin-gonic/gin"
-	"main/internal/logic/api/v1/pay"
-	"main/internal/svc"
 	"main/internal/types"
 	"net/http"
+
+	"github.com/civet148/log"
+	"main/internal/logic/api/v1/pay"
+	"main/internal/svc"
 )
 
 // @Summary 微信支付回调通知(URI包含交易ID)
@@ -35,8 +36,8 @@ func WechatPayNotifyHandler(svcCtx *svc.ServiceContext) gin.HandlerFunc {
 		err := l.WechatPayNotify(c, &req)
 		if err != nil {
 			log.Errorf("call WechatPayNotify failed, err: %v", err.Error())
+			return
 		}
-		c.Abort()
 
 	}
 }

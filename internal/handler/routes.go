@@ -41,7 +41,7 @@ func RegisterHandlers(server *gin.Engine, serverCtx *svc.ServiceContext) {
 
 	gapiv1ws := server.Group("/api/v1/ws")
 	{
-		gapiv1ws.GET("/market", apiv1ws.WsMarketListHandler(serverCtx))
+		gapiv1ws.GET("/market/list", apiv1ws.GetMarketListHandler(serverCtx))
 	}
 
 	gapiv1pay := server.Group("/api/v1/pay")
