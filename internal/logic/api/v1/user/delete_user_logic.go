@@ -3,19 +3,21 @@ package user
 import (
 	"context"
 
+	"github.com/gin-gonic/gin"
+
 	"main/internal/svc"
 	"main/internal/types"
 )
 
 type DeleteUserLogic struct {
-	ctx    context.Context
+	ginCtx *gin.Context
 	svcCtx *svc.ServiceContext
 }
 
 // 删除用户
-func NewDeleteUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *DeleteUserLogic {
+func NewDeleteUserLogic(c *gin.Context, svcCtx *svc.ServiceContext) *DeleteUserLogic {
 	return &DeleteUserLogic{
-		ctx:    ctx,
+		ginCtx: c,
 		svcCtx: svcCtx,
 	}
 }

@@ -3,19 +3,21 @@ package pay
 import (
 	"context"
 
+	"github.com/gin-gonic/gin"
+
 	"main/internal/svc"
 	"main/internal/types"
 )
 
 type WechatPayNotifyLogic struct {
-	ctx    context.Context
+	ginCtx *gin.Context
 	svcCtx *svc.ServiceContext
 }
 
 // 微信支付回调通知(URI包含交易ID)
-func NewWechatPayNotifyLogic(ctx context.Context, svcCtx *svc.ServiceContext) *WechatPayNotifyLogic {
+func NewWechatPayNotifyLogic(c *gin.Context, svcCtx *svc.ServiceContext) *WechatPayNotifyLogic {
 	return &WechatPayNotifyLogic{
-		ctx:    ctx,
+		ginCtx: c,
 		svcCtx: svcCtx,
 	}
 }
